@@ -1,26 +1,29 @@
 pipeline {
     agent any
+
     stages {
-        stage('Instalacion de dependencias') {
+        stage('Instalación de dependencias') {
             agent {
-                docker{
+                docker {
                     image 'node:22'
                     reuseNode true
                 }
             }
-            stages{
-                stage('Instalacion dependencias'){
-                    steps {
-                        sh 'npm install'
-                    }   
-                }
-                stage('Ejecucion de pruebas automatizadas'){
-                    steps {
-                        sh 'npm run test:cov'
-                    }   
-                }
-            } 
+            steps {
+                sh 'npm install'
+            }
         }
-        
+
+        stage('Ejecución de pruebas automatizadas') {
+            agent {
+                docker {
+                    image 'node:22'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh 'npm run test:cov'
+            }
+        }
     }
 }
