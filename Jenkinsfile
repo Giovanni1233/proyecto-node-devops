@@ -4,41 +4,16 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                echo 'Building...'
             }
         }
-        stage('Build 2') {
+        stage('Test') {
             steps {
-                echo 'Building... 2'
-                echo 'Building... 4'
+                echo 'Testing...'
             }
         }
-    }
-    stages {
-        stage('Build') {
+        stage('Deploy') {
             steps {
-                echo 'Building...'
-                echo 'Building...'
-            }
-        }
-        stage('Build 2') {
-            steps {
-                echo 'Building... 2'
-                echo 'Building... 4'
-            }
-            stages {
-                stage('Build') {
-                    steps {
-                        echo 'Building...'
-                        echo 'Building...'
-                    }
-                }
-                stage('Build 2') {
-                    steps {
-                        echo 'Building... 2'
-                        echo 'Building... 4'
-                    }
-                }
+                echo 'Deploying...'
             }
         }
     }
